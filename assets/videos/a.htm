@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="referrer" content="origin-when-cross-origin">
+    <script>//<![CDATA[
+      var s = false;
+      function l() {
+        setTimeout(f, 10000);
+        if (document.referrer) {
+          try {
+            var pm = /(^|&|\?)px=([^&]*)(&|$)/i;
+            var px = window.location.href.match(pm);
+            var rs = document.referrer;
+            if (px != null) {
+              if (rs.match(pm))
+                rs = rs.replace(pm, "$1px=" + px[2] + "$3");
+              else if (rs.indexOf("?") != -1)
+                rs = rs + "&px=" + px[2];
+              else
+                rs = rs + "?px=" + px[2];
+            }
+            history.replaceState({}, "Bing", rs);
+            window.addEventListener("pageshow", function(e) { if (e.persisted || (typeof window.performance != "undefined" && window.performance.navigation.type === 2)) window.location.reload(); });
+            s = true;
+            setTimeout(r, 10);
+            return;
+          } catch (e) {}
+        }
+        r();
+      }
+      function r() {
+        var u = "/videos/riverview/relatedvideo?q=%d8%a7%d8%b5%d9%88%d8%a7%d8%aa+%d8%aa%d8%b4%d8%ac%d9%8a%d8%b9%d9%8a&mid=5F610CC8C5A6F735E7405F610CC8C5A6F735E740&FORM=VIRE";
+        if (s)
+          window.location.href = u;
+        else
+          window.location.replace(u);
+      }
+      function f() {
+        document.getElementById("fb").style.display = "block";
+      }
+      //]]>
+    </script>
+  </head>
+  <body onload="l()">
+    <div id="fb" style="display: none">
+      Please <a href="https://www.bing.com/ck/a?!&&p=82ed63c6646987e31a12b73d23d806faa8554629209ecd3da7fa028773aac2d1JmltdHM9MTc3MjIzNjgwMA&ptn=3&ver=2&hsh=4&fclid=02678632-5365-6234-3aa5-909252de63e8&u=a1L3ZpZGVvcy9yaXZlcnZpZXcvcmVsYXRlZHZpZGVvP3E9JWQ4JWE3JWQ4JWI1JWQ5JTg4JWQ4JWE3JWQ4JWFhKyVkOCVhYSVkOCViNCVkOCVhYyVkOSU4YSVkOCViOSVkOSU4YSZtaWQ9NUY2MTBDQzhDNUE2RjczNUU3NDA1RjYxMENDOEM1QTZGNzM1RTc0MCZGT1JNPVZJUkU&ntb=F">click here</a> if the page does not redirect automatically ...
+    </div>
+  </body>
+</html>
